@@ -1,6 +1,9 @@
 from selenium.webdriver.common.by import By
 from behave import given, when, then
 
+AMAZON_SEARCH_FIELD = (By.ID, 'twotabsearchtextbox')
+SEARCH_ICON = (By.ID, 'nav-search-submit-button')
+
 @given('Open Amazon page')
 def open_amazon(context):
     context.driver.get('https://www.amazon.com/')
@@ -33,3 +36,11 @@ def verify_cart_results(context):
     expected_res = "Your Amazon Cart is empty"
     actual_res = context.driver.find_element(By.XPATH, "//h2[contains(text(), 'Your Amazon Cart')]").text
     assert expected_res == actual_res, f'Expected {expected_res} but got actual {actual_res}'
+
+@when('Input text {text}')
+def input_search_word(context, text):
+    context.driver.find_element(*AMAZON_SEARCH_FIELD).send_keys(text)
+
+@when('Click on search button')
+def click_search(context):
+    context.driver.find_element(*SEARCH_ICON).click()

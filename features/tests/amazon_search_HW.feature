@@ -13,3 +13,12 @@ Feature: Amazon search tests
     Given Open Amazon page
     When Click on cart icon
     Then Verify cart is empty
+
+    Scenario: User can add a product to the cart
+    Given Open Amazon page
+    When Input text clock
+    When Click on search button
+    And Click on the first product
+    When Click on Add to cart button
+    And Open cart page
+    Then Verify that text Clock is shown
