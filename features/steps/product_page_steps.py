@@ -14,7 +14,7 @@ def click_add_to_cart(context):
 
 @given('Open Amazon product {product_id} page')
 def open_product(context, product_id):
-    context.driver.get(f'https://www.amazon.com/StrombergBrand-Spectrum-Umbrella-Most-Popular-Style-Automatic/dp/{product_id}/')
+    context.app.main_page.open_product(product_id)
 
 @then('Verify user can click through colors')
 def verify_user_can_select_colors(context):

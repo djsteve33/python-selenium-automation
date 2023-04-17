@@ -11,3 +11,6 @@ def click_first_product(context):
     #sleep(2)
     context.driver.wait.until(EC.element_to_be_selected(PRODUCT_PRICE))
 
+@then('Verify {category} department is selected')
+def verify_selected_dept(context, category):
+    context.app.search_results_page.verify_selected_dept(category)

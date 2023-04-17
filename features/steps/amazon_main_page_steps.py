@@ -42,11 +42,25 @@ def verify_cart_results(context):
     # assert expected_res == actual_res, f'Expected {expected_res} but got actual {actual_res}'
     context.app.cart_page.verify_cart_is_empty()
 
+@when('Select department by alias {alias}')
+def select_department(context, alias):
+    context.app.header.select_department(alias)
+
 
 @when('Input text {text}')
 def input_search_word(context, text):
-    context.driver.find_element(*AMAZON_SEARCH_FIELD).send_keys(text)
+    # context.driver.find_element(*AMAZON_SEARCH_FIELD).send_keys(text)
+    context.app.header.input_search_text(text)
 
 @when('Click on search button')
 def click_search(context):
-    context.driver.find_element(*SEARCH_ICON).click()
+    # context.driver.find_element(*SEARCH_ICON).click()
+    context.app.header.click_search()
+
+@when('Hover over New Arrival options')
+def hover_new_arrival_options(context):
+    context.app.header.hover_clothing_options()
+
+@then('Verify Women option present')
+def verify_women_option(context):
+    context.app.header.verify_women_option_shown()

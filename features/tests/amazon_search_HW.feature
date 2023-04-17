@@ -22,3 +22,15 @@ Feature: Amazon search tests
     When Click on Add to cart button
     And Open cart page
     Then Verify that text Clock is shown
+
+   Scenario: User can select and search in a department
+    Given Open Amazon page
+    When Select department by alias movies-tv
+    When Input text Top Gun
+    When Click on search button
+    Then Verify movies-tv department is selected
+
+  Scenario: User can see clothing options
+    Given Open Amazon product B07YP9JK3F page
+    When Hover over New Arrival options
+    Then Verify Women option present
